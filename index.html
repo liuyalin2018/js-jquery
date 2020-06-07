@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    -
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="box">
+        <div class="box_list">
+            <ul class="slider">
+                <li>
+                    <a href="#"><img src="imgs/b1.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b2.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b3.jpg" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b4.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b5.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b6.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b7.jpg.webp" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="imgs/b8.jpg.webp" /></a>
+                </li>
+            </ul>
+            <span class="left" id="left"> ‹ </span>
+            <span class="right" id="right"> › </span>
+            <ul class="bottom" id="bottom">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+    var index = 0;
+    var length = $('.slider li').length;
+
+    $('.slider li').eq(index).addClass('opa');
+    $('.bottom li').eq(index).addClass('active');
+
+    setInterval(autoMove, 3000);
+
+    function autoMove() {
+        index++;
+        if (index >= length) index = 0;
+        changeTo(index);
+    }
+
+    function changeTo(index) {
+        $('.slider li').eq(index).addClass('opa').siblings().removeClass('opa');
+        $('.bottom li').eq(index).addClass('active').siblings().removeClass('active');
+    }
+    $('#left').click(function() {
+        index--;
+        if (index < 0) index = length - 1;
+        changeTo(index);
+    });
+    $('#right').click(function() {
+        index++;
+        if (index >= length) index = 0;
+        changeTo(index);
+    });
+</script>
+
+</html>
